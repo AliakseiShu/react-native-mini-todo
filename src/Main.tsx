@@ -36,10 +36,13 @@ const Main = () => {
 	const render: ListRenderItem<TasksType> = ({item}) => {
 		return <View>
 			<TouchableOpacity style={[styles.item, {opacity: item.isDone ? 0.2 : 1}]}
-												onLongPress={()=>removeTask(item.key)}
+												onLongPress={() => removeTask(item.key)}
 												onPress={() => updateTask(item.key)}>
 				<>
-					<Text style={[styles.title, {textDecorationLine: item.isDone ? 'line-through' : "none", textDecorationStyle: 'double'}]}>{item.title}</Text>
+					<Text style={[styles.title, {
+						textDecorationLine: item.isDone ? 'line-through' : "none",
+						textDecorationStyle: 'double'
+					}]}>{item.title}</Text>
 					<Text>{item.isDone ? 'true' : 'false'}</Text>
 				</>
 			</TouchableOpacity>
@@ -49,8 +52,7 @@ const Main = () => {
 	let addTask = () => {
 		const newTask: TasksType = {
 			//new Date().getTime().toString()
-
-			key: `${title}${tasks.length + 1 }` ,
+			key: `${title}${tasks.length + 1}`,
 			title,
 			isDone: false
 		}
@@ -61,19 +63,8 @@ const Main = () => {
 		setTasks(tasks.filter(el => el.key !== key))
 	}
 	const updateTask = (key: string) => {
-		setTasks(tasks.map(el => el.key === key ? {...el, isDone: !el.isDone } : el))
+		setTasks(tasks.map(el => el.key === key ? {...el, isDone: !el.isDone} : el))
 	}
-
-/*	const renderHeader = () => {
-		return <View style={styles.header}>
-			<TextInput value={title} onChangeText={setTitle} style={styles.input}/>
-			<TouchableOpacity>
-				<Text onPress={addTask}>
-					ADD
-				</Text>
-			</TouchableOpacity>
-		</View>
-	}*/
 
 	return (
 		<View>
@@ -88,7 +79,6 @@ const Main = () => {
 			<FlatList
 				data={tasks}
 				renderItem={render}
-				//ListHeaderComponent={renderHeader}
 			/>
 		</View>
 	);
@@ -120,7 +110,6 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		alignItems: 'center',
 		marginBottom: 15,
-
 	}
 })
 
