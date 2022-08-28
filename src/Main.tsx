@@ -51,7 +51,6 @@ const Main = () => {
 
 	let addTask = () => {
 		const newTask: TasksType = {
-			//new Date().getTime().toString()
 			key: `${title}${tasks.length + 1}`,
 			title,
 			isDone: false
