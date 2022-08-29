@@ -30,6 +30,11 @@ const Main = () => {
 			key: "3",
 			title: 'REACT NATIVE',
 			isDone: false
+		},
+		{
+			key: "4",
+			title: 'CSS',
+			isDone: false
 		}
 	])
 	const [title, setTitle] = useState('')
